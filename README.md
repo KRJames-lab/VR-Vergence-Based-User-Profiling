@@ -1,6 +1,6 @@
 # VR Vergence-Based User Profiling
 
-The experimentation code for the paper [**"VR Vergence-Based User Profiling: Clustering Binocular Coordination Patterns for Adaptive Display Design"**][paper] (IDW 2026).
+The experimentation code for the paper [**"VR Vergence-Based User Profiling: Clustering Binocular Coordination Patterns for Adaptive Display Design"**][paper].
 
 ## Overview
 
@@ -12,9 +12,7 @@ biomarkers from a single 60-second task, and cluster **407 GazeBaseVR
 participants** into interpretable, software-only profiles for adaptive VR
 rendering.
 
-> _Data source: **GazeBaseVR** (Lohr et al., 2023; [Figshare][gazebasevr-data]);
-> not included in this repo. We use the **first recording round (N = 407 unique
-> participants)** only._
+> _Data source: **GazeBaseVR** (Lohr et al., 2023; [Figshare][gazebasevr-data])_
 
 ## Repository Structure
 
@@ -49,14 +47,14 @@ artifact removal, zero-phase 2nd-order Butterworth at 40 Hz, two-point
 central-difference velocity), each of the 23 depth transitions is treated as a
 **step input**, from which we extract **6 biomarkers**:
 
-| Biomarker | Definition | Unit |
-| --------- | ---------- |:----:|
-| Latency | First 2σ deviation of the raw vergence after a transition | ms |
-| Speed | Mean rate from onset to 90% of the step | deg/s |
-| Overshoot | Peak excess beyond target / step size | % |
-| Settling time | Time to stay within ideal ±1° for 200 ms | ms |
-| SS error | Mean absolute tracking error in steady state (≥ 1.5 s) | deg |
-| Jitter | Steady-state standard deviation | deg |
+| Biomarker     | Definition                                                | Unit  |
+| ------------- | --------------------------------------------------------- |:-----:|
+| Latency       | First 2σ deviation of the raw vergence after a transition | ms    |
+| Speed         | Mean rate from onset to 90% of the step                   | deg/s |
+| Overshoot     | Peak excess beyond target / step size                     | %     |
+| Settling time | Time to stay within ideal ±1° for 200 ms                  | ms    |
+| SS error      | Mean absolute tracking error in steady state (≥ 1.5 s)    | deg   |
+| Jitter        | Steady-state standard deviation                           | deg   |
 
 **Clustering input = 11 features**: latency, speed, overshoot, settling time and
 SS error split into convergence / divergence (= 10), plus a single jitter term.
@@ -68,11 +66,11 @@ SS error split into convergence / divergence (= 10), plus a single jitter term.
 Signed steady-state error separates the clusters into clinically meaningful
 profiles:
 
-| Cluster | Profile | N (%) | SS error | MAE | Jitter |
-| ------- | ------- |:-----:|:--------:|:---:|:------:|
-| **C0** | Normal           | 263 (65%) | +1.0° | 1.77° | 0.50° |
-| **C1** | Over-converging   | 118 (29%) | +3.0° | 2.98° | 0.43° |
-| **C2** | Under-converging  | 26 (6%)   | −4.9° | 5.00° | 0.62° |
+| Cluster | Profile          | N (%)     | SS error | MAE   | Jitter |
+| ------- | ---------------- |:---------:|:--------:|:-----:|:------:|
+| **C0**  | Normal           | 263 (65%) | +1.0°    | 1.77° | 0.50°  |
+| **C1**  | Over-converging  | 118 (29%) | +3.0°    | 2.98° | 0.43°  |
+| **C2**  | Under-converging | 26 (6%)   | −4.9°    | 5.00° | 0.62°  |
 
 <p align="center">
   <img src="figs/fig_clusters.png" width="640" alt="PCA scatter of the K=3 vergence-coordination clusters with per-cluster tracking error">
