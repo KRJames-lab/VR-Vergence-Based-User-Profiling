@@ -3,9 +3,6 @@ datasets/
 eda_results/
 reports/
 *.csv
-
-# Figures / logs
-*.png
 *.log
 
 # Python
